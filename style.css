@@ -1,0 +1,35 @@
+
+
+.number-pad {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.div {
+    background-color: #1B2631DF;
+    display: none;
+    /* flex-wrap: nowrap; */
+    /* flex-direction: column; */
+    /* height: 3em; */
+    padding: 10px;
+    margin: 20px;
+    height: auto;
+    width: auto;
+    /* line-height: 75px; */
+    font-weight: bold;
+    font-size: 40px;
+    vertical-align: middle;
+    border-radius: 10px;
+    justify-content: space-around;
+    border-color: black;
+}
+
+.row {
+    /* justify-content: space-around; */
+    justify-content: center;
+}
