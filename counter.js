@@ -1,16 +1,19 @@
 const CURRENT_TOTAL = "CURRENT_TOTAL"; 
-const DAILY_HISTORY = "DAILY_HISTORY";
+const DAY_DATE_ = (num) => `DAY_DATE_${num}`;
+const DAY_VALUE_ = (num) => `DAY_VALUE_${num}`;
+
 var currentTotal = Number(window.localStorage.getItem(CURRENT_TOTAL)) == 0 || 10000 
     ? 0 
     : window.localStorage.getItem(CURRENT_TOTAL);
 
 
 var todaysHistory = [0];
-var previousDays =  [];
 
 AddToTotal(currentTotal);
 UpdateHistoryDisplay();
+
 // functions 
+
 
 function DisplayTotal()
 {
@@ -53,23 +56,50 @@ function Today()
     return today = `${yyyy}-${mm}-${dd}`;
 }
 
-function NewDay()
+function Save()
 {
-    previousDays.push(`${Today()} : ${currentTotal}`);
+    ShiftDays();
+    localStorage.setItem(DAY_DATE_(0), Today());
+    localStorage.setItem(DAY_VALUE_(0), currentTotal);
+
     Reset();
     todaysHistory = [0];
 
-    // window.localStorage.setItem(DAILY_HISTORY, previousDays);
-    console.log(previousDays);
-    
     UpdateHistoryDisplay();
 }
 
+function ShiftDays()
+{
+    for (var idx = 0; idx < 7; idx++)
+    {
+        if (localStorage.getItem(DAY_DATE_(idx)) == null)
+            localStorage.setItem(DAY_DATE_(idx), '....-..-..')
+        
+        if (localStorage.getItem(DAY_VALUE_(idx)) == null)
+            localStorage.setItem(DAY_VALUE_(idx), '....')
+    }
+
+    for (var idx = 7; idx > 0; idx--)
+    {
+        localStorage.setItem(DAY_DATE_(idx), localStorage.getItem(DAY_DATE_(idx-1)));
+        localStorage.setItem(DAY_VALUE_(idx), localStorage.getItem(DAY_VALUE_(idx-1)));
+    }
+}
+
+function CreateHistoryString()
+{
+    let currentLog =  "<h2>Log:</h2>";
+    for (var idx = 0; idx < 7; idx++)
+    {
+        let key = DAY_DATE_(idx);
+        let key2 = DAY_VALUE_(idx);
+
+        currentLog += `<h2>${localStorage.getItem(key)} : ${localStorage.getItem(key2)}</h2>`;
+    }
+    return currentLog;
+}
+
+
 function UpdateHistoryDisplay() {
-    let currentLog = "Log:";
-
-    for (let idx = previousDays.length; idx > 0; idx--)
-        currentLog += `<h2>${previousDays[idx - 1]}</h2>`;
-
-    document.getElementById("daily-history").innerHTML = currentLog;
+    document.getElementById("daily-history").innerHTML = CreateHistoryString();
 }
