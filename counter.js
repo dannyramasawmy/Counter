@@ -1,26 +1,29 @@
-const CURRENT_TOTAL = "CURRENT_TOTAL"; 
 const DAY_DATE_ = (num) => `DAY_DATE_${num}`;
 const DAY_VALUE_ = (num) => `DAY_VALUE_${num}`;
 
-var currentTotal = Number(window.localStorage.getItem(CURRENT_TOTAL)) == 0 || 10000 
-    ? 0 
-    : window.localStorage.getItem(CURRENT_TOTAL);
+// initial script
 
-
-var todaysHistory = [0];
-
-AddToTotal(currentTotal);
 CheckHistory();
-UpdateHistoryDisplay();
+var currentTotal = JSON.parse(localStorage.getItem(DAY_VALUE_(0))) ?? 0;
+var todaysHistory = [0];
+AddToTotal(0);
 
 // functions 
 
-
 function DisplayTotal()
 {
+    if(localStorage.getItem(DAY_DATE_(0)) != Today())
+    {
+        ShiftDays();
+        currentTotal = 0;
+    }
+
     document.getElementById("total").innerText = currentTotal;
-    window.localStorage.setItem(CURRENT_TOTAL, JSON.stringify(currentTotal));
-    console.log(currentTotal);
+    
+    window.localStorage.setItem(DAY_DATE_(0), Today());
+    window.localStorage.setItem(DAY_VALUE_(0), JSON.stringify(currentTotal));
+
+    UpdateHistoryDisplay();
 }
 
 function AddToTotal(value)
@@ -34,7 +37,7 @@ function Reset()
 {
     todaysHistory.push(currentTotal);
     currentTotal = 0; 
-    DisplayTotal()
+    DisplayTotal();
 };
 
 function Back()
@@ -57,18 +60,6 @@ function Today()
     return today = `${yyyy}-${mm}-${dd}`;
 }
 
-function Save()
-{
-    ShiftDays();
-    localStorage.setItem(DAY_DATE_(0), Today());
-    localStorage.setItem(DAY_VALUE_(0), currentTotal);
-
-    Reset();
-    todaysHistory = [0];
-
-    UpdateHistoryDisplay();
-}
-
 function CheckHistory()
 {
     for (var idx = 0; idx < 7; idx++)
@@ -77,7 +68,7 @@ function CheckHistory()
             localStorage.setItem(DAY_DATE_(idx), '....-..-..')
         
         if (localStorage.getItem(DAY_VALUE_(idx)) == null)
-            localStorage.setItem(DAY_VALUE_(idx), '....')
+            localStorage.setItem(DAY_VALUE_(idx), 0)
     }
 }
 
