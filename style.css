@@ -19,74 +19,67 @@
 }
 
 body {
-    font-family: Verdana, sans-serif;
     background-color: var(--body-color);
+    
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    
     touch-action: manipulation;
 }
 
 .total-view {
     background-color: var(--total-view-color);
-    flex-direction: column;
-    padding: 10px; 
-    margin: 20px; 
-    height: auto; 
-    width: auto;
-    line-height: 10rem;
-    vertical-align: middle;
-    border-radius: 5%;
-    justify-content: space-around;
-    border-color: black;
+    padding: 2rem;
+    border: 0;
+    margin-left: 2rem; 
+    margin-right: 2rem; 
+    margin-top: 5rem;
+    margin-bottom: 5rem;   
 }
 
 .total-button {
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10%;
     background-color: var(--total-display-color);
-    color: white;
-    width : 90%;
-    padding: 20px;
-    border-color: black;
-    text-align: center;
+    padding: 2rem;
+    border: 0;
+    margin-left: 2rem; 
+    margin-right: 2rem; 
+    margin-top: 5rem;
+    margin-bottom: 5rem;   
 }
 
 .number-pad {
     background-color: var(--keypad-color);
-    padding: 10px;
-    margin: 20px;
-    height: auto;
-    width: auto;
-    line-height: 75px;
-    font-weight: bold;
-    font-size: 40px;
-    vertical-align: middle;
-    border-radius: 5%;
-    justify-content: space-around;
-    border-color: black;
+    
+    padding: 1rem;
+    border: 0;
+
+    margin-left: 2rem; 
+    margin-right: 2rem; 
+    margin-top: 5rem;
+    margin-bottom: 5rem;   
 }
 
 .row {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
 }
 
 .number {
-    border-radius: 15%;
     background-color: var(--button-color);
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     width : 30%;
-    padding: 10px;
-    margin: 20px;
-    border-color: black;
-    text-align: center;
+    padding: 1em;
+    margin: 1em;
 }
  
 h1 {
     font-size: 8rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+h2 {
+    font-size: 3rem;
     font-weight: bold;
     color: var(--text-color);
 }
