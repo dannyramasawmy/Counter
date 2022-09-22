@@ -10,6 +10,7 @@ var currentTotal = Number(window.localStorage.getItem(CURRENT_TOTAL)) == 0 || 10
 var todaysHistory = [0];
 
 AddToTotal(currentTotal);
+CheckHistory();
 UpdateHistoryDisplay();
 
 // functions 
@@ -68,7 +69,7 @@ function Save()
     UpdateHistoryDisplay();
 }
 
-function ShiftDays()
+function CheckHistory()
 {
     for (var idx = 0; idx < 7; idx++)
     {
@@ -78,7 +79,10 @@ function ShiftDays()
         if (localStorage.getItem(DAY_VALUE_(idx)) == null)
             localStorage.setItem(DAY_VALUE_(idx), '....')
     }
+}
 
+function ShiftDays()
+{
     for (var idx = 7; idx > 0; idx--)
     {
         localStorage.setItem(DAY_DATE_(idx), localStorage.getItem(DAY_DATE_(idx-1)));
