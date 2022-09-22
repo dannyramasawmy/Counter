@@ -1,7 +1,31 @@
+/* 
+#012030
+#13678A
+#45C4B0
+#9AEBA3
+#DAFDBA
+*/
 
+:root {
+    --body-color: #012030;
+    
+    --text-color: #DAFDBA;
+
+    --keypad-color: #9AEBA3;
+    --button-color: #13678A;
+    
+    --total-view-color: #9AEBA3;
+    --total-display-color: #45C4B0;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    background-color: var(--body-color);
+    touch-action: manipulation;
+}
 
 .total-view {
-    background-color: #ccd5dedf;
+    background-color: var(--total-view-color);
     flex-direction: column;
     padding: 10px; 
     margin: 20px; 
@@ -9,13 +33,25 @@
     width: auto;
     line-height: 10rem;
     vertical-align: middle;
-    border-radius: 1%;
+    border-radius: 5%;
     justify-content: space-around;
     border-color: black;
 }
 
+.total-button {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10%;
+    background-color: var(--total-display-color);
+    color: white;
+    width : 90%;
+    padding: 20px;
+    border-color: black;
+    text-align: center;
+}
+
 .number-pad {
-    background-color: #ccd5dedf;
+    background-color: var(--keypad-color);
     padding: 10px;
     margin: 20px;
     height: auto;
@@ -29,21 +65,16 @@
     border-color: black;
 }
 
-h1 {
-    font-size: 8rem;
-    font-weight: bold;
-    color: white;
-}
-
-.number-pad {
+.row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .number {
     border-radius: 15%;
-    background-color: #000000df;
-    color: white;
+    background-color: var(--button-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -54,27 +85,8 @@ h1 {
     text-align: center;
 }
  
-.total-button {
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10%;
-    background-color: #000000df;
-    color: white;
-    width : 90%;
-    padding: 20px;
-    border-color: black;
-    text-align: center;
-}
- 
-
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-
-.row {
-    /* justify-content: space-around; */
-    justify-content: center;
+h1 {
+    font-size: 8rem;
+    font-weight: bold;
+    color: var(--text-color);
 }

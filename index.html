@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Counter</title>
-  <link rel="stylesheet" href=style.css>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <link rel="stylesheet" href=style.css>
 </head>
 
 <!-- nav -->
@@ -17,38 +17,57 @@
             <h1 id="total"></h1>
         </div>
     </div>
-    
+
     <div class="number-pad">
         <div class="row">
-            <div id="number-700" class="number"> <h2>700</h2> </div>    
-            <div id="number-800" class="number"> <h2>800</h2> </div>    
-            <div id="number-900" class="number"> <h2>900</h2> </div>    
+            <div id="number-700" class="number" onclick="AddToTotal(700)">
+                <h2>700</h2>
+            </div>
+            <div id="number-800" class="number" onclick="AddToTotal(800)">
+                <h2>800</h2>
+            </div>
+            <div id="number-900" class="number" onclick="AddToTotal(900)">
+                <h2>900</h2>
+            </div>
         </div>
         <div class="row">
-            <div id="number-400" class="number"> <h2>400</h2> </div>    
-            <div id="number-500" class="number"> <h2>500</h2> </div>    
-            <div id="number-600" class="number"> <h2>600</h2> </div>    
+            <div id="number-400" class="number" onclick="AddToTotal(400)">
+                <h2>400</h2>
+            </div>
+            <div id="number-500" class="number" onclick="AddToTotal(500)">
+                <h2>500</h2>
+            </div>
+            <div id="number-600" class="number" onclick="AddToTotal(600)">
+                <h2>600</h2>
+            </div>
         </div>
         <div class="row">
-            <div id="number-100" class="number"> <h2>100</h2> </div>    
-            <div id="number-200" class="number"> <h2>200</h2> </div>    
-            <div id="number-300" class="number"> <h2>300</h2> </div>    
+            <div id="number-100" class="number" onclick="AddToTotal(100)">
+                <h2>100</h2>
+            </div>
+            <div id="number-200" class="number" onclick="AddToTotal(200)">
+                <h2>200</h2>
+            </div>
+            <div id="number-300" class="number" onclick="AddToTotal(300)">
+                <h2>300</h2>
+            </div>
         </div>
         <div class="row">
-            <div id="back-space" class="number"> <h2>←</h2> </div>    
-            <div id="1000" class="number"> <h2>1000</h2> </div>    
-            <div id="reset" class="number"> <h2>↺</h2> </div>    
+            <div id="back-space" class="number" onclick="Back()">
+                <h2>←</h2>
+            </div>
+            <div id="1000" class="number" onclick="AddToTotal(1000)"> 
+                <h2>1000</h2> 
+            </div>    
+            <div id=" reset" class="number" onclick="Reset()">
+                <h2>↺</h2>
+            </div>
         </div>
     </div>
 </body>
 
 <footer>
-  <br>
-  <br>
-1 2 3 4 5 ...
-  <br>
-  <br>
-  <br>
+    <h2>Hello world</h2>
 </footer>
 
 <script src="counter.js"></script>

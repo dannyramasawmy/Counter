@@ -1,34 +1,34 @@
-var total = 0;
+var currentTotal = 0;
 var totalHistory = [0];
 
-AddToTotal(total);
+AddToTotal(currentTotal);
 
 function DisplayTotal()
 {
-    document.getElementById("total").innerText = value;
+    document.getElementById("total").innerText = currentTotal;
+    console.log(currentTotal);
 }
 
 function AddToTotal(value)
 {
-    totalHistory.push(total);
-    total += value; 
+    totalHistory.push(currentTotal);
+    currentTotal += value; 
     DisplayTotal()
 };
 
-function ResetTotal()
+function Reset()
 {
-    totalHistory.push(total);
-    total = 0; 
+    totalHistory.push(currentTotal);
+    currentTotal = 0; 
     DisplayTotal()
 };
 
 function Back()
 {
-    value = totalHistory.length > 0 
-        ? totalHistory.pop
+    let value = totalHistory.length > 0 
+        ? totalHistory.pop()
         : 0;
 
-    totalHistory.push(total);
-    total = value; 
+    currentTotal = value; 
     DisplayTotal()
 };
