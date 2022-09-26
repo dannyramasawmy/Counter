@@ -26,6 +26,28 @@ function DisplayTotal()
     UpdateHistoryDisplay();
 }
 
+function RunningTotal()
+{
+    let runningTotal = 0;
+    let divisor = 0;
+
+    for (var idx = 0; idx < 7; idx++)
+    {
+        if (localStorage.getItem(DAY_VALUE_(idx)) == null)
+            continue;
+
+        if (localStorage.getItem(DAY_VALUE_(idx)) == 0)
+            continue;
+
+        divisor += 1;
+
+        runningTotal += JSON.parse(localStorage.getItem(DAY_VALUE_(idx)));
+    }
+
+    console.log(`Total ${runningTotal}, Avg: ${runningTotal / divisor}`)
+    return `Total: ${runningTotal} | Avg: ${runningTotal / divisor}`;
+}
+
 function AddToTotal(value)
 {
     todaysHistory.push(currentTotal);
@@ -83,7 +105,7 @@ function ShiftDays()
 
 function CreateHistoryString()
 {
-    let currentLog =  "<h2>Log:</h2>";
+    let currentLog =  `<h2>${RunningTotal()}</h2>`;
     for (var idx = 0; idx < 7; idx++)
     {
         let key = DAY_DATE_(idx);
